@@ -10,6 +10,8 @@ public class Main {
         Coin coin4 = new Coin(50, 5, "Olov", 1899);
         Coin coin5 = new Coin(5, 10, "Silver", 1869);
         Coin coin6 = new Coin(5, 10, "Bronze", 1869);
+        Coin coin7 = new Coin(50, 10, "Bronze", 1969);
+        Coin coin8 = new Coin(50, 10, "Silver", 1709);
 
         Set<Coin> coins = new TreeSet<>(new Comparator<Coin>() {
             @Override
@@ -26,7 +28,7 @@ public class Main {
                     return Double.compare(o1.getDiameter(), o2.getDiameter());
                 }
 
-                return 1;
+                return o1.getYear() - o2.getYear();
             }
         });
 
@@ -36,6 +38,8 @@ public class Main {
         coins.add(coin4);
         coins.add(coin5);
         coins.add(coin6);
+        coins.add(coin7);
+        coins.add(coin8);
 
         System.out.println("\nСортируем монеты по металлу (от Z до A), по номиналу (от большего к меньшему), по диаметру" +
                 "(от меньшего к большему):");
@@ -43,55 +47,19 @@ public class Main {
             System.out.println(coin);
         }
 
-        Set<Coin> coins1 = new TreeSet<>(new SortByDiameterComparator());
+        Set<Coin> coins1 = new TreeSet<>(new SortByComparator());
         coins1.add(coin1);
         coins1.add(coin2);
         coins1.add(coin3);
         coins1.add(coin4);
         coins1.add(coin5);
         coins1.add(coin6);
+        coins1.add(coin7);
+        coins1.add(coin8);
 
-        System.out.println("\nСортируем монеты по диаметру от большего к меньшему:");
+        System.out.println("\nСортируем монеты по диаметру (от большего к меньшему), году (от меньшего к большему), " +
+                "металлу (по алфавиту от A до Z), по номиналу (от меньшего к большему):");
         for (Coin coin : coins1) {
-            System.out.println(coin);
-        }
-
-        Set<Coin> coins2 = new TreeSet<>(new SortByYearComparator());
-        coins2.add(coin1);
-        coins2.add(coin2);
-        coins2.add(coin3);
-        coins2.add(coin4);
-        coins2.add(coin5);
-        coins2.add(coin6);
-
-        System.out.println("\nСортируем монеты по году выпуска от меньшего к большему:");
-        for (Coin coin : coins2) {
-            System.out.println(coin);
-        }
-
-        Set<Coin> coins3 = new TreeSet<>(new SortByMetallComparator());
-        coins3.add(coin1);
-        coins3.add(coin2);
-        coins3.add(coin3);
-        coins3.add(coin4);
-        coins3.add(coin5);
-        coins3.add(coin6);
-
-        System.out.println("\nСортируем монеты по металлу от A до Z:");
-        for (Coin coin : coins3) {
-            System.out.println(coin);
-        }
-
-        Set<Coin> coins4 = new TreeSet<>(new SortByNominalComparator());
-        coins4.add(coin1);
-        coins4.add(coin2);
-        coins4.add(coin3);
-        coins4.add(coin4);
-        coins4.add(coin5);
-        coins4.add(coin6);
-
-        System.out.println("\nСортируем монеты по номиналу от меньшего к большему:");
-        for (Coin coin : coins4) {
             System.out.println(coin);
         }
     }
